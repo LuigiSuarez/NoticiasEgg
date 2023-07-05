@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
+<head th:replace="/fragments/head::head('panel admin')">
+
+</head>
+<body>
+
+    <header class="bg-custom-color">
+        <nav th:replace="/fragments/nav.html::nav"> </nav>
+    </header>
+
+
+
+    <!--            alerta exito-->
+    <div class="alert alert-success text-center alert-dismissible fade show" th:if="${exito!=null && !exito.isEmpty()}">
+        <p th:text="${exito}"></p>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+    <!--            fin alerta-->
+
+    <div class="row mt-4 ">
+
+        <img class="col-3 offset-2 rounded-circle " style="overflow: hidden" th:src="@{/imagen/perfil/__${session.usuariosession.id}__}" alt="" srcset="">
+
+        <div class="col-5   border border-custom-color rounded" >
+
+
+
+            <div class="row bg-custom-color text-white rounded-top align-items-center text-center" >
+                <p>Datos de usuario</p>
+            </div>
+
+            <br>
+            <p th:if="${session.usuariosession!=null}"  th:text="'Nombre de Usuario: '+ ${usuario.nombre}"></p>
+            <p th:if="${session.usuariosession!=null}"  th:text="'Email de Usuario : '+ ${usuario.getEmail()}"></p>
+            <p th:if="${session.usuariosession!=null}"  th:text="'Rol de Usuario   : '+ ${usuario.getRol()}"></p>
+            <br>
+            <a th:href="@{/perfil/modificar}"><button class="btn btn-custom-color "> Modificar Perfil</button></a>
+            <br>
+            <br>
+        </div>
+
+
+    </div>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
+</body>
+</html>

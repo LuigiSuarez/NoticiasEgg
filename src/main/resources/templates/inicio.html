@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
+
+
+<head th:replace="/fragments/head::head('inicio')">
+
+</head>
+
+<body>
+ 
+     <!-- menu -->
+
+
+     <header class="bg-custom-color">
+         <nav th:replace="/fragments/nav.html::nav"> </nav>
+     </header>
+
+
+     <!-- noticia formulario -->
+
+    
+      <section class=" container-fluid ">
+          <div class="row mt-5 g-2">
+
+              <div class="col-3 " th:each="noticia: ${listanoticias}" >
+
+                  <div  class="card" style="width: 100%;">
+                      <img th:src="@{/imagen/noticia/__${noticia.id}__}" style="aspect-ratio: 16/9" class="card-img-top" alt="...">
+                      <div class="card-body">
+                          <h5 class="card-title" th:text="${noticia.titulo}"></h5>
+                          <p class="card-text" th:text="${noticia.cuerpo}" ></p>
+                          <a th:href="@{/noticia/focus/__${noticia.id}__}" class="btn btn-primary">Ver Noticia</a>
+
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+
+
+      </section>
+    
+  
+
+      <!-- jss -->
+
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
+</body>
+</html>

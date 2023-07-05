@@ -1,0 +1,74 @@
+<!DOCTYPE  html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="/fragments/head::head('noticia formulario')">
+
+</head>
+<body>
+      <!-- menu -->
+      <header class="bg-custom-color">
+          <nav th:replace="/fragments/nav.html::nav"> </nav>
+      </header>
+      <!-- noticia formulario -->
+    
+   
+        <section class="container mt-5 d-flex flex-column" >
+
+
+          <h1 class="text-center">Ingresa los datos para cargar la noticia</h1>
+
+            <!--       thymeleaft alertas-->
+
+            <div  class="alert alert-danger text-center alert-dismissible fade show" th:if="${error!=null}">
+                <p th:text="${error}"></p>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+
+
+
+            <div class="alert alert-success text-center alert-dismissible fade show" th:if="${exito!=null}">
+                <p th:text="${exito}"></p>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+
+<!--            termino de las alertar-->
+
+
+          <form class="col-12 col-lg-6 mx-auto" action="/noticia/enviar" method="post" enctype="multipart/form-data">
+
+<!--              titulo-->
+            <div class="mb-3">
+              <label for="titulo_noticia" class="form-label">Titulo de la noticia</label>
+              <input type="text" class="form-control" id="titulo_noticia" name="titulo_noticia" aria-describedby="emailHelp">
+             
+            </div>
+
+<!--              cuerpo-->
+            <div class="mb-3" >
+              <label for="cuerpo_noticia" class="mb-2">Cuerpo de la noticia</label>
+              <div class="form-floating"> 
+                <textarea class="form-control" id="cuerpo_noticia" name="cuerpo_noticia" style="height: 200px"></textarea>
+              </div>
+
+                <div class="mb-3">
+                    <label for="archivo" class="form-label">Imagen de la noticia</label>
+                    <input type="file" name="archivo" id="archivo" class="form-control">
+
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary mt-5 ">Enviar</button>
+          </form>
+        </section>
+
+
+
+        
+        
+
+  
+
+      <!-- jss -->
+
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE  html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
+
+<head th:replace="/fragments/head::head('busqueda')">
+
+</head>
+<body>
+<!-- menu -->
+<header class="bg-custom-color">
+    <nav th:replace="/fragments/nav.html::nav"> </nav>
+</header>
+<!-- noticia formulario -->
+
+
+<section class="container mt-5 d-flex flex-column" >
+<!--    caja contenedor form-->
+    <div class="shadow">
+        <br>
+    <h1 class="text-center">Ingresa el titulo de la noticia a buscar</h1>
+
+    <!--       thymeleaft alertas-->
+
+    <div  class="alert alert-danger text-center alert-dismissible fade show" th:if="${error!=null}">
+        <p th:text="${error}"></p>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+
+
+    <div class="alert alert-success text-center alert-dismissible fade show" th:if="${exito!=null}">
+        <p th:text="${exito}"></p>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+    <!--            termino de las alertar-->
+
+
+    <form class="col-12 col-lg-6 mx-auto " th:action="@{/noticia/resultado}" th:object="${noticia}" method="get">
+
+        <!--              titulo-->
+        <div class="mb-3">
+            <label for="titulo" class="form-label">Titulo de la noticia</label>
+            <input type="text" th:field="*{titulo}" class="form-control" id="titulo" name="titulo">
+
+        </div>
+
+        <!--              cuerpo-->
+
+
+         <button type="submit" class="btn btn-primary"> Buscar</button>
+    </form>
+
+        <br>
+
+    </div>
+
+
+    <!--    resultados-->
+
+    <div class="row mt-5">
+        <h2 class="text-center">Aqui podras ver los resultados de tu busqueda</h2>
+        <div >
+            <table class="table table-light text-center">
+                <thead>
+                <tr >
+                    <th class="bg-primary text-bg-primary" scope="col">id</th>
+                    <th class="bg-primary text-bg-primary" scope="col">Titulo </th>
+                    <th class="bg-primary text-bg-primary" scope="col">Cuerpo</th>
+                    <th class="bg-primary text-bg-primary" scope="col">Ver Noticia</th>
+
+                </tr>
+                </thead>
+
+                <tbody th:each="noticia: ${noticiasPorTitulo}">
+                <tr>
+                    <th scope="row" th:text="${noticia.id}"></th>
+                    <td th:text="${noticia.titulo}"></td>
+                    <td th:text="${noticia.cuerpo}"></td>
+                    <td>
+                        <a th:href="@{/noticia/focus/__${noticia.id}__}"> <button class="btn btn-primary"> Ver Noticia</button></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</section>
+
+
+
+
+
+
+
+
+<!-- jss -->
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
+</body>
+</html>

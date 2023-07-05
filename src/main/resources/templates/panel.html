@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
+<head th:replace="/fragments/head::head('panel admin')">
+
+</head>
+
+<style>
+    *{
+        text-decoration: none;
+    }
+    a{
+        text-decoration: none;
+    }
+    .row > *{
+        padding-left: 0;
+        padding-right: 0;
+    }
+</style>
+<body>
+
+    <header class="bg-custom-color">
+        <nav th:replace="/fragments/nav.html::nav"> </nav>
+    </header>
+
+
+
+
+
+        <div class="row mt-5 " >
+
+
+            <div class="offset-1 col-4" >
+                <div class="row">
+
+                    <div class="col-6 mb-2" >
+                        <a th:href="@{/noticia/crear}" >
+                            <div class="card " style="width: 18rem" >
+                                <img src="/img/crear_noticia.jpg "  class="card-img-top" style="aspect-ratio: 16/9" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title text-center">Crear Noticias</h5>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col-6 mb-2">
+                        <a th:href="@{/noticia/listar}" >
+                            <div class="card" style="width: 18rem" >
+                                <img src="/img/mod.jpg" class="card-img-top" style="aspect-ratio: 16/9" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title text-center">Modificar Noticias</h5>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col-6 mb-2 ">
+                        <a th:href="@{/noticia/busqueda}">
+
+                            <div class="card" style="width: 18rem" >
+                                <img src="/img/buscar.jpeg" class="card-img-top" style="aspect-ratio: 16/9" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title text-center " >Buscar Noticias</h5>
+                                </div>
+                            </div>
+
+                        </a>
+                    </div>
+
+                    <div class=" col-6 mb-2 ">
+                        <a th:href="@{/admin/lista}">
+
+                            <div class="card" style="width: 18rem" >
+                                <img src="/img/listarimagenes.jpg" class="card-img-top" style="aspect-ratio: 16/9" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title text-center " >Listar Noticias</h5>
+                                </div>
+                            </div>
+
+                        </a>
+                    </div>
+
+                </div>
+
+
+
+
+            </div>
+<!--div de la derecha-->
+            <div class="d-flex flex-column col-6 justify-content-center align-items-center">
+                <h1>
+                    <p th:if="${session.usuariosession!=null}"  th:text="'Hola de vuelta '+ ${session.usuariosession.nombre}"></p>
+
+
+                </h1>
+
+                <img class="col-6 text-center rounded-2" th:src="@{/imagen/perfil/__${session.usuariosession.id}__}" alt="" srcset="">
+
+            </div>
+
+        </div>
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
+</body>
+</html>
